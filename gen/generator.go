@@ -245,7 +245,11 @@ func (g *Generator) receiverName(typ gotype.Type) string {
 			buf.WriteRune(unicode.ToLower(sym))
 		}
 	}
-	return buf.String()
+	out := buf.String()
+	if strings.TrimSpace(out) == "" {
+		out = "_in"
+	}
+	return out
 }
 
 type kinds []gotype.Kind
