@@ -40,7 +40,7 @@ func NewGenerator(src gotype.Type, config *config.Config, opts ...Option) (g *Ge
 
 func (g *Generator) WriteTo(w io.Writer) (n int64, err error) {
 	if g.file == nil {
-		g.file = jen.NewFilePath(g.input.PkgPath())
+		g.file = jen.NewFilePathName(g.input.PkgPath(), g.input.PkgPath())
 	}
 	g.file.HeaderComment(DefaultHeader)
 	g.generate()
